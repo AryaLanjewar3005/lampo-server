@@ -145,10 +145,13 @@ app.use(cors());
 const db = knex({
   client: "pg",
   connection: {
-    host: "127.0.0.1",
-    user: "postgres",
-    password: "RanF!@34N",
-    database: "lampo",
+    connectionString: process.env.DATABASE_URL,
+    ssl: {rejectUnauthorized: false},
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PW,
+    database: process.env.DATABASE_DB,
+    port: 5432,
   },
 });
 // Validation function
